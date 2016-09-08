@@ -1,11 +1,13 @@
 ﻿
 
-angular.module('inmuebleApp').service('helperService',[ '$location', function ($location) {
+angular.module('inmuebleApp').service('helperService',[ '$location', 'myenum', function ($location, myenum) {
     this.capitalize = function (myString) {
         
         return myString.charAt(0).toUpperCase() + myString.slice(1);
         
-    };
+        };
+        
+        
     this.redirectWithParameter = function (inmuebleID,page) {
             //porq estoy fuera de la app al ir a otra pagina con otra app. 
             //Deberia usar el routing     

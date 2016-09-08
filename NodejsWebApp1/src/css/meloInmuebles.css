@@ -1,3 +1,8 @@
 ﻿.customNavigation{
-    background-color:brown;
+    background-color:#450000;
+}
+
+.grad-header{
+
+    background: linear-gradient(to right,  #450000 , #858585); /* Standard syntax */
 }

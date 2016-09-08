@@ -93,7 +93,7 @@
     <Content Include="src\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="src\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="src\img\images.jpg" />
-    <Content Include="src\img\melLogo.jpeg" />
+    <Content Include="src\img\logo.png" />
     <Content Include="src\img\smallLogo.PNG" />
     <Content Include="src\img\smallLogo1.jpg" />
     <Content Include="src\js\x2js-master.zip" />

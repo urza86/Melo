@@ -30,8 +30,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top customNavigation" role="navigation">
         <div class="container customNavigation">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-brand" style="background-color:black; width:300px; height:50px;">
-                <p>hola</p>
+            <div class="navbar-brand"  style="width:300px; height:70px;">
+                <img src="../img/logo.png" alt="logo" />
             </div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -44,7 +44,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul  class="nav navbar-nav navbar-right">
                     <li>
                         <a href="about.html">Inversiones</a>
                     </li>
@@ -122,7 +122,7 @@
         <!-- /.container -->
     </nav>
     <!-- Header Carousel -->
-    <header id="myCarousel" class="carousel slide">
+    <header  id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -163,12 +163,18 @@
         <div class="row"  >
             <div class="col-md-4" ng-repeat="result in results | filter: { MostrarEnHome: 'Si' }">
                 <div class="panel panel-default">
-                    <div class="panel-heading ">
-                        <h4><i class="fa fa-fw fa-check"></i> {{capitalize(result.Titulo)}}</h4>
+                    <div class="panel-heading grad-header">
+                        <h4 style="color:white"><i class="fa fa-fw fa-check"></i> {{capitalize(result.Titulo)}}</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                       
+                        <row>
+                            
+                                <img class="img-responsive img-thumbnail" src="../img/images.jpg" alt="imagen" style="max-height:160px; max-width:200px;" />
+                            
+                            
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                            
+                        </row>
                         <input type="button" class="btn btn-default" ng-click="redirect(result.ID,'inmueble')" value="Learn More" /><!--pasar parametro para buscar el inmueble-->
                     </div>
                 </div>
