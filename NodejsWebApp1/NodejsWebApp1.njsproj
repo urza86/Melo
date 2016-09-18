@@ -37,6 +37,7 @@
     <Compile Include="src\js\app\app.js" />
     <Compile Include="src\js\app\controllers\ArticleController.js" />
     <Compile Include="src\js\app\controllers\HomeController.js" />
+    <Compile Include="src\js\app\controllers\searchController.js" />
     <Compile Include="src\js\app\Services\DBConnectionService.js" />
     <Compile Include="src\js\app\Services\HelperLibrary.js" />
     <Compile Include="src\js\app\testing.js" />
@@ -116,13 +117,13 @@
     <Content Include="src\views\full-width.html" />
     <Content Include="src\views\index.html" />
     <Content Include="src\views\LICENSE" />
-    <Content Include="src\views\portfolio-1-col.html" />
     <Content Include="src\views\portfolio-2-col.html" />
     <Content Include="src\views\portfolio-3-col.html" />
     <Content Include="src\views\portfolio-4-col.html" />
     <Content Include="src\views\portfolio-item.html" />
     <Content Include="src\views\pricing.html" />
     <Content Include="src\views\README.md" />
+    <Content Include="src\views\searchPage.html" />
     <Content Include="src\views\services.html" />
     <Content Include="src\views\sidebar.html" />
     <Content Include="src\views\test.html" />

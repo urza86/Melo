@@ -13,6 +13,7 @@
     <link href="css/modern-business.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../css/meloInmuebles.css" rel="stylesheet" type="text/css" />
     <script src="../js/app/angular.min.js"></script>
     <script src="../js/app/app.js"></script>
     <script src="../js/app/Services/HelperLibrary.js"></script>
@@ -26,9 +27,12 @@
 </head>
 <body ng-controller="ArticleController">
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top customNavigation" role="navigation">
+        <div class="container customNavigation">
             <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-brand"  style="width:300px; height:70px;">
+                <img src="../img/logo.png" alt="logo" />
+            </div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -36,41 +40,51 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <a style=" width:200px; height:30px; url('C:\Users\JavierStudio\Desktop\guille\startbootstrap-modern-business-1.0.5\Guillermo Propiedades\img\smallLogo1.jpeg');" href="index.html"></a>
+
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <a href="inmueble.html">About</a>
-                    </li>
+                <ul  class="nav navbar-nav navbar-right">
                     <li>
+                        <a href="about.html">Inversiones</a>
+
+
+                    </li>
+                    <!-- <li>
+
                         <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
+                    </li>-->
+
+
+
+
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inmuebles <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                                <a href="portfolio-1-col.html">Lotes</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                                <a href="portfolio-1-col.html">Casas</a>
                             </li>
                             <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                                <a href="portfolio-2-col.html">Departamentos</a>
                             </li>
                             <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                                <a href="portfolio-4-col.html">Otros</a>
                             </li>
-                            <li>
+                            <!--<li>
+
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
-                            </li>
+                            </li>-->
+
+
                         </ul>
                     </li>
-                    <li class="dropdown">
+
+                    <!--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -83,8 +97,9 @@
                                 <a href="blog-post.html">Blog Post</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown">
+                    </li>-->
+
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -103,7 +118,14 @@
                                 <a href="pricing.html">Pricing Table</a>
                             </li>
                         </ul>
+                    </li>-->
+                    <li>
+                        <a href="contact.html">Contactanos</a>
                     </li>
+                    <li>
+                        <a href="contact.html">Quienes Somos</a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

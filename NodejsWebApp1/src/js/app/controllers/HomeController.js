@@ -1,8 +1,22 @@
-﻿// redirect hacerlo desde servicio, como salgo de la app para entrar a otro esto sucede por no usar el reouting, cambiar lo q devielve el la respuesta desde node en vez de todo el doc, que devuelva 404 o 200
+﻿
 
 myApp.controller('HomeController', ['$scope', '$http','helperService','$location',  function ( $scope, $http, helperService, $location) {
         $scope.greeting = 'Hola!';
         console.log($scope.greeting);
+        $('#editsearch').keypress(function (e) {
+            if (e.which != '13') { return true;}
+            if (e.which == '13') {
+                $('nav').hide();
+                $('header').hide();
+                $('footer').hide();
+                $('.container').hide();
+                $('body').css("background-color", "#f5f5f5");
+                $('#loader').css("margin-top", "20%");
+                $('#loader').show();
+                setTimeout(window.location.assign("/searchPage.html?token="+ $scope.tokenSearch), 2000);
+            }
+            return false;
+        });
         
         $scope.capitalize = function (myString){
             return helperService.capitalize(myString);
@@ -17,6 +31,45 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
              
         
         };
+        $scope.restrictCharacters = function (paragraph){
+
+            return paragraph.substring(0, 217) + "...";
+
+        }
+        
        
+        
+
+        var init = function () {
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: -34.66772, lng: -58.69761 },
+                    zoom: 8
+                });
+                var marker = new google.maps.Marker({
+                    position: { lat: -34.66772, lng: -58.69761 },
+                    map: map,
+                    title: 'Inmueble 1'
+                });
+            };
+
+            $('nav').hide();
+            $('header').hide();
+            $('footer').hide();
+            $('.container').hide();
+            $('body').css("background-color", "#f5f5f5");
+            $('#loader').css("margin-top", "20%");
+            $('#loader').show();
+            setTimeout(function () {
+                $('#loader').hide();
+                $('nav').show();
+                $('header').show();
+                $('footer').show();
+                $('.container').show(); initMap();}, 2000);
+                
+        };
+        // and fire it after definition
+       init();
         
     }]);

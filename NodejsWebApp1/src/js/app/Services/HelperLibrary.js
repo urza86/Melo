@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('inmuebleApp').service('helperService',[ '$location', 'myenum', function ($location, myenum) {
+angular.module('inmuebleApp').service('helperService',[ '$location', function ($location) {
     this.capitalize = function (myString) {
         
         return myString.charAt(0).toUpperCase() + myString.slice(1);
