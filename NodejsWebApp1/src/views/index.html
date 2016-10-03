@@ -116,9 +116,9 @@
                         <li>
                             <a href="contact.html">Contactanos</a>
                         </li>
-                        <li>
+                        <!--li>
                             <a href="contact.html">Quienes Somos</a>
-                        </li>
+                        </li-->
 
                     </ul>
                 </div>
@@ -165,99 +165,178 @@
         </header>
         <!-- Page Content -->
 
-        <div class="container" style="padding-top:3%;">
-            <div class="row">
-                <div class="col-md-4" ng-repeat="result in results | filter: { MostrarEnHome: 'Si' }">
-                    <div class="panel panel-default">
-                        <div class="panel-heading grad-header">
-                            <h4 style="color:white"><i class="fa fa-fw fa-check"></i> {{capitalize(result.Titulo)}}</h4>
-                        </div>
-                        <div class="panel-body">
-                            <row>
+    <div class="container" style="padding-top:3%;">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="result in results | filter: { MostrarEnHome: 'Si' }">
+                <div class="panel panel-default">
+                    <div class="panel-heading grad-header">
+                        <h4 style="color:white"><i class="fa fa-fw fa-check"></i> {{capitalize(result.Titulo)}}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <row>
 
-                                <!--<img class="img-responsive img-thumbnail" src="../img/images.jpg" alt="imagen" style="max-height:160px; max-width:200px;" />-->
-                                <img class="img-responsive img-thumbnail" ng-src="{{result.ImagenRuta}}" style="max-height:160px; max-width:200px;" />
-                                <div class="articleThumbnail">
-                                    <p>{{restrictCharacters(result.Description)}}</p>
-                                </div>
-                            </row>
-                            <!--input type="button" class="btn btn-default" ng-click="redirect(result.ID,'inmueble')" value="&#xf067; Learn More" /--><!--pasar parametro para buscar el inmueble-->
-                            <button class="btn btn-default" ng-click="redirect(result.ID,'inmueble')"><i class="fa fa-plus" aria-hidden="true"></i> Info</button><!--pasar parametro para buscar el inmueble-->
+                            <!--<img class="img-responsive img-thumbnail" src="../img/images.jpg" alt="imagen" style="max-height:160px; max-width:200px;" />-->
+                            <img class="img-responsive img-thumbnail" ng-src="{{result.ImagenRuta}}" style="max-height:160px; max-width:200px;" />
+                            <div class="articleThumbnail">
+                                <p>{{restrictCharacters(result.Description)}}</p>
+                            </div>
+                        </row>
+                        <!--input type="button" class="btn btn-default" ng-click="redirect(result.ID,'inmueble')" value="&#xf067; Learn More" /--><!--pasar parametro para buscar el inmueble-->
+                        <button class="btn btn-default" ng-click="redirect(result.ID,'inmueble')"><i class="fa fa-plus" aria-hidden="true"></i> Info</button><!--pasar parametro para buscar el inmueble-->
 
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketing Icons Section -->
+
+        <div class="row" style="padding-top:30px">
+            <div class="col-lg-12">
+
+
+                <form style="width:320px" action="" class="col-lg-12 search-form">
+                    <div class="form-group has-feedback">
+                        <!--label for="search" class="sr-only">Search</label-->
+                        <!--input  type="text" class="form-control" name="search" id="editsearch" placeholder="Buscar y Presionar Enter" /-->
+                        <!--input type="text" ng-model="tokenSearch" class="form-control" id="editsearch" placeholder="Buscar y Presionar Enter" /-->
+                        <!--span class=" form-control-feedback  clickableAwesomeFont"><i class=" glyphicon glyphicon-search"></i></span-->
+
+                    </div>
+
+
+                </form>
+
+
+                <!--div>
+                    <a data-toggle="modal" data-target="#myModal" href="#">Busqueda Avanzada</a>
+                </!--div><!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Busqueda Avanzada: Propiedades e Inmuebles</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <span><label for="search">Ubicaciones: </label><input type="text" class="form-control" name="search" ng-model="ubicacion" placeholder="search"></span><br>
+                                    <span><label for="search">Tipo de Propiedad: </label><input type="text" class="form-control" name="search" ng-model="tipoProp" placeholder="search"></span> </br>
+                                    <label style="padding-top:2%;" for="search">Precio:</label>
+                                    <section class="row">
+                                        <form class="form-inline">
+                                            <div class="col-lg-6 col-sm-6">	<label for="search">Maximo: </label><div><input type="text" class="form-control" name="search" ng-model="precioMax" placeholder="search" /></div></div>
+                                            <div class="col-lg-6 col-sm-6"><label for="search">Minimo: </label><div><input type="text" class="form-control" name="search" ng-model="precioMin" placeholder="search" /></div></div>
+                                        </form>
+                                    </section>
+                                    <label style="padding-top:2%;" for="search">Ambientes:</label><section class="row"><div class="col-lg-6 col-sm-6"><div><input type="text" class="form-control" name="search" ng-model="ambiente" placeholder="search"></div></div></section>
+                                    <label style="padding-top:2%;" for="search">Superficie:</label>
+                                    <section class="row">
+                                        <form class="form-inline">
+                                            <div class="col-lg-6 col-sm-6">	<label for="search">Total: </label><div><input type="text" class="form-control" name="search" ng-model="total" placeholder="search" /></div></div>
+                                            <div class="col-lg-6 col-sm-6"><label for="search">Cubierta: </label><div><input type="text" class="form-control" ng-model="cubierta" name="search" placeholder="search" /></div></div>
+                                        </form>
+                                    </section>
+
+                                </form>
+                            </div>
+                            <!--div class="modal-footer">
+                                <button type="button" class="btn btn-default  center-block" ng-click="busquedaAvanzada()" data-dismiss="modal">Buscar</button>
+                            </div-->
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Marketing Icons Section -->
-
-            <div class="row" style="padding-top:30px">
-                <div class="col-lg-12">
-
-                    
-                        <form style="width:320px" action="" class="col-lg-12 search-form">
-                            <div class="form-group has-feedback">
-                                <!--label for="search" class="sr-only">Search</label-->
+        <!-- Features Section -->
+        <div-- class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Búsqueda </h2>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="input-group">
+                            <div class="input-group-btn search-panel">
                                 
-                                <!--input  type="text" class="form-control" name="search" id="editsearch" placeholder="Buscar y Presionar Enter" /-->
-                                <input type="text" ng-model="tokenSearch" class="form-control" id="editsearch" placeholder="Buscar y Presionar Enter" />
-                                
-                                <!--span class=" form-control-feedback  clickableAwesomeFont"><i class=" glyphicon glyphicon-search"></i></span-->
-                           
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span ng-model="operacion" id="search_concept">{{operacionSelected}}</span> <span class="caret"></span>
+                                </button>
+                                <ul   class="dropdown-menu" role="menu">
+                                    <li ng-repeat="item in operaciones"><a href="" ng-click="selectOperacion(item)">{{item}}</a></li>
+
+
+                                </ul>
+                               
                             </div>
-                           
+                            <div class="input-group-btn search-panel">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span id="search_concept">{{inmuebleSelected}}</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="item in inmuebles"><a href="" ng-click="selectinmueble(item)">{{item}}</a></li>
+                                    
 
-                        </form>
-                    
+                                </ul>
 
-                    <div>
-                        <a data-toggle="modal" data-target="#myModal" href="#">Busqueda Avanzada</a>
-                    </div><!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Busqueda Avanzada: Propiedades e Inmuebles</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <span><label for="search">Ubicaciones: </label><input type="text" class="form-control" name="search" id="search" placeholder="search"></span><br>
-                                        <span><label for="search">Tipo de Propiedad: </label><input type="text" class="form-control" name="search" id="search" placeholder="search"></span> </br>
-                                        <label style="padding-top:2%;" for="search">Precio:</label>
-                                        <section class="row">
-                                            <form class="form-inline">
-                                                <div class="col-lg-6 col-sm-6">	<label for="search">Maximo: </label><div><input type="text" class="form-control" name="search" id="search" placeholder="search" /></div></div>
-                                                <div class="col-lg-6 col-sm-6"><label for="search">Minimo: </label><div><input type="text" class="form-control" name="search" id="search" placeholder="search" /></div></div>
-                                            </form>
-                                        </section>
-                                        <label style="padding-top:2%;" for="search">Ambientes:</label><section class="row"><div class="col-lg-6 col-sm-6"><div><input type="text" class="form-control" name="search" id="search" placeholder="search"></div></div></section>
-                                        <label style="padding-top:2%;" for="search">Superficie:</label>
-                                        <section class="row">
-                                            <form class="form-inline">
-                                                <div class="col-lg-6 col-sm-6">	<label for="search">Total: </label><div><input type="text" class="form-control" name="search" id="search" placeholder="search" /></div></div>
-                                                <div class="col-lg-6 col-sm-6"><label for="search">Cubierta: </label><div><input type="text" class="form-control" name="search" id="search" placeholder="search" /></div></div>
-                                            </form>
-                                        </section>
-
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default  center-block" data-dismiss="modal">Buscar</button>
-                                </div>
                             </div>
+                            <div class="input-group-btn search-panel">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span id="search_concept">{{zonaSelected}}</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="item in zonas"><a href="" ng-click="selectZona(item)">{{item}}</a></li>
+                                    
+                                </ul>
+
+                            </div>
+
+
+                            <input type="hidden" name="search_param" value="all" id="search_param">
+                            <input type="text" ng-model="valueTerm" class="form-control" name="x" placeholder="Search term...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" ng-click="busquedaAvanzada()"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="page-header">Busqueda Por Zona</h2>
+            </div> <br /><br />
+            <!--div class="col-md-3">
+                <div class="checkbox">
+                    <label><input id="allZones" type="checkbox" onclick="checkall()" value="">Todas</label>
                 </div>
+                <div class="checkbox">
+                    <label><input class="inputcheckbox" type="checkbox" value="">Zona Oeste</label>
+                </div>
+                <div class="checkbox">
+                    <label><input class="inputcheckbox" type="checkbox" value="">Zona Norte</label>
+                </div>
+                <div class="checkbox">
+                    <label><input class="inputcheckbox" type="checkbox" value="">Zona Sur</label>
+                </div>
+                <div class="checkbox">
+                    <label><input class="inputcheckbox" type="checkbox" value="">Capital Federal</label>
+                </div>
+                <div class="checkbox">
+                    <label><input class="inputcheckbox" type="checkbox" value="">Costa Atlantica</label>
+                </div>
+                <!--<p>The Modern Business template by Start Bootstrap includes:</p>
+                <ul>
+                    <li><strong>Bootstrap v3.2.0</strong>
+                    </li>
+                    <li>jQuery v1.11.0</li>
+                    <li>Font Awesome v4.1.0</li>
+                    <li>Working PHP contact form with validation</li>
+                    <li>Unstyled page elements for easy customization</li>
+                    <li>17 HTML pages</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+                -->
+            <!--/div-->
+            <row>
                 <div class="col-md-3">
                     <div class="checkbox">
                         <label><input id="allZones" type="checkbox" onclick="checkall()" value="">Todas</label>
@@ -277,25 +356,15 @@
                     <div class="checkbox">
                         <label><input class="inputcheckbox" type="checkbox" value="">Costa Atlantica</label>
                     </div>
-                    <!--<p>The Modern Business template by Start Bootstrap includes:</p>
-                    <ul>
-                        <li><strong>Bootstrap v3.2.0</strong>
-                        </li>
-                        <li>jQuery v1.11.0</li>
-                        <li>Font Awesome v4.1.0</li>
-                        <li>Working PHP contact form with validation</li>
-                        <li>Unstyled page elements for easy customization</li>
-                        <li>17 HTML pages</li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-                    -->
                 </div>
-
                 <div id="map" style="height:400px; width:800px;" class="col-md-9">
                     <!--<img class="img-responsive" src="http://placehold.it/700x450" alt="">-->
                     <!--<iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=34.6678438,-58.7114603&amp;spn=56.506174,79.013672&amp;t=m&amp;z=14&amp;output=embed"></iframe>-->
                 </div>
-            </div>
+
+            </row> 
+            </div>    
+        
             <!-- /.row -->
             <div></div>
             <!--script>

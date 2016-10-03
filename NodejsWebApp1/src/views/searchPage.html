@@ -213,9 +213,9 @@
                         <li>
                             <a href="contact.html">Contactanos</a>
                         </li>
-                        <li>
+                        <!--li>
                             <a href="contact.html">Quienes Somos</a>
-                        </li>
+                        </li-->
 
 
 
@@ -263,13 +263,27 @@
         <!-- /.row -->
         <section ng-hide="filteredResults.length == 0">
             <!-- Project One -->
-            <div class="row" ng-repeat="result in filteredResults" >
-                <div class="col-md-7">
-                    
-                    <img class="img-responsive img-thumbnail" style="max-height:300px; max-width:700px;" ng-src="{{result.ImagenRuta}}" alt="No imagen para Mostrar">
-                    
+            <form class="form-inline">
+                <div class="col-lg-2"><h4>Precio</h4></div>
+                <div class="form-group">
+                    <label style="display:inline-block" class="col-lg-2">Min:</label>
+                    <input style="display:inline-block" type="number" class="form-control col-lg-2" ng-model="precioMin" />
                 </div>
-                <div class="col-md-5" >
+                <div class="form-group">
+                    <label style="display:inline-block" class="col-lg-2">Max:</label>
+                    <input style="display:inline-block" type="number" class=" form-control col-lg-2" ng-model="precioMax" />
+                    <button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </form>
+            
+            <hr />
+            <div class="row" ng-repeat="result in filteredResults" >
+                <div class="col-md-7" ng-if="filtrarPrecio(result)">
+
+                    <img class="img-responsive img-thumbnail" style="max-height:300px; max-width:700px;" ng-src="{{result.ImagenRuta}}" alt="No imagen para Mostrar">
+
+                </div>
+                <div class="col-md-5" ng-if="filtrarPrecio(result)">
                     <h3>{{result.Titulo}}</h3>
                     <h4>{{result.Direccion}}</h4>
                     <p>{{restrictCharacters(result.Description)}}</p>

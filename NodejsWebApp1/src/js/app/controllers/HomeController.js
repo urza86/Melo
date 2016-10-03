@@ -2,6 +2,25 @@
 
 myApp.controller('HomeController', ['$scope', '$http','helperService','$location',  function ( $scope, $http, helperService, $location) {
         $scope.greeting = 'Hola!';
+        $scope.operaciones = ["Venta", "Alquiler"];
+        $scope.inmuebles = ["Casa", "Departamento", "Terreno", "PH"];
+        $scope.zonas = ["Zona Oeste", "Zona Sur", "Zona Norte", "CABA", "Costa Atlantica"];
+        $scope.inmuebleSelected = $scope.inmuebles[0];
+        $scope.operacionSelected = $scope.operaciones[0];
+        $scope.zonaSelected = $scope.zonas[0];
+
+        $scope.selectOperacion = function (item) { 
+        
+            $scope.operacionSelected = item;
+        };
+        $scope.selectinmueble = function (item) {
+            
+            $scope.inmuebleSelected = item;
+        };
+        $scope.selectZona = function (item) {
+            
+            $scope.zonaSelected = item;
+        };
         console.log($scope.greeting);
         $('#editsearch').keypress(function (e) {
             if (e.which != '13') { return true;}
@@ -37,8 +56,24 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
 
         }
         
-       
-        
+        $scope.busquedaAvanzada = function () {
+            
+            if ($scope.valueTerm == null) { var parameters = "operacion=" + $scope.operacionSelected+"&inmueble="+ $scope.inmuebleSelected+"&zona="+$scope.zonaSelected; }
+            else { var parameters = "operacion=" + $scope.operacionSelected + "&inmueble=" + $scope.inmuebleSelected+ "&zona=" + $scope.zonaSelected+"&term="+$scope.valueTerm; }
+           // 
+                
+            
+            $('nav').hide();
+            $('header').hide();
+            $('footer').hide();
+            $('.container').hide();
+            $('body').css("background-color", "#f5f5f5");
+            $('#loader').css("margin-top", "20%");
+            $('#loader').show();
+            setTimeout(window.location.assign("/searchPage.html?" + parameters), 2000);
+
+        };
+        $scope.mostrar = function () { console.log('test');};
 
         var init = function () {
             var map;

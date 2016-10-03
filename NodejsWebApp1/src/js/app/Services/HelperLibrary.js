@@ -14,6 +14,11 @@ angular.module('inmuebleApp').service('helperService',[ '$location', function ($
             window.location.href = page +".html"+"?ID="+inmuebleID; 
             
         };
+        this.countParameters = function () {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&');
+            return sURLVariables.length;
+        };
         this.getParameterFromURL = function(sParam) {
 
             var sPageURL = decodeURIComponent(window.location.search.substring(1)),
