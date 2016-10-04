@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="DBConnection.js" />
+    <Compile Include="emailServer.js" />
     <Compile Include="server.js" />
     <Compile Include="src\js\app\angular.min.js" />
     <Compile Include="src\js\app\app.js" />
