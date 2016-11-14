@@ -1,8 +1,25 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<head>
 
+<head>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_k7IKpOo7diIBy8uaYbpii");
+        })();
+
+        function sendEmail(msg) {
+
+            // parameters: service_id, template_id, template_parameters
+            emailjs.send("javierbandin", "template_dWCqz3yE", { name: "James", notes: msg })
+            .then(function (response) {
+                console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+            }, function (err) {
+                console.log("FAILED. error=", err);
+            });
+        }
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +68,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="about.html">Inversiones</a>
+                        <a href="searchpage.html?tipo=Inversion">Inversiones</a>
                     </li>
                     <!-- <li>
                         <a href="services.html">Services</a>
@@ -73,20 +90,16 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inmuebles <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.html">Lotes</a>
-
+                                <a href="searchPage.html?tipo=Lote">Lotes</a>
                             </li>
                             <li>
-                                <a href="portfolio-1-col.html">Casas</a>
-
+                                <a href="searchPage.html?tipo=Casa">Casas</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.html">Departamentos</a>
-
+                                <a href="searchPage.html?tipo=Departamento">Departamentos</a>
                             </li>
                             <li>
-                                <a href="portfolio-4-col.html">Otros</a>
-
+                                <a href="searchPage.html?tipo=Otro">Otros</a>
                             </li>
                             <!--<li>
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
@@ -283,12 +296,13 @@
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Mensaje:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                            <textarea rows="10" cols="100" class="form-control" id="messageng" ng-model="mailMsg"  required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
                         </div>
                     </div>
                     <div id="success"></div>
                     <!-- For success/fail messages -->
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <!--button type="submit" class="btn btn-primary" onclick="sendEmail()">Enviar</button-->
+                    <input type="button" class="btn btn-primary" ng-click="sendEmail(mailMsg)" value="Enviar" />
                 </form>
             </div>
 
@@ -317,8 +331,8 @@
 
     <!-- Contact Form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    <!--script-- src="js/jqBootstrapValidation.js"></!--script-->
+    <!--script src="js/contact_me.js"></script-->
 
 </body>
 

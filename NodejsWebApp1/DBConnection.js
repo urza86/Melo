@@ -6,7 +6,7 @@ var request;
 function connectToDB() {
     var DBConnection = {
         user: "javier",
-        password: "cecilia2002",
+        password: "cecilia2003",
         server: "localhost\\SQLEXPRESS",
         database: "MeloPropiedades",
         port: "31642"

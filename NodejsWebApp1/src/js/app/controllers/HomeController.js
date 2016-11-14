@@ -58,8 +58,12 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
         
         $scope.busquedaAvanzada = function () {
             
-            if ($scope.valueTerm == null) { var parameters = "operacion=" + $scope.operacionSelected+"&inmueble="+ $scope.inmuebleSelected+"&zona="+$scope.zonaSelected; }
-            else { var parameters = "operacion=" + $scope.operacionSelected + "&inmueble=" + $scope.inmuebleSelected+ "&zona=" + $scope.zonaSelected+"&term="+$scope.valueTerm; }
+            if ($scope.valueTerm == null) {
+                var parameters = "operacion=" + $scope.operacionSelected + "&inmueble=" + $scope.inmuebleSelected + "&zona=" + $scope.zonaSelected;
+            }
+            else {
+                var parameters = "operacion=" + $scope.operacionSelected + "&inmueble=" + $scope.inmuebleSelected + "&zona=" + $scope.zonaSelected + "&term=" + $scope.valueTerm;
+            }
            // 
                 
             
@@ -73,20 +77,72 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
             setTimeout(window.location.assign("/searchPage.html?" + parameters), 2000);
 
         };
-        $scope.mostrar = function () { console.log('test');};
+        
+        $scope.checkall = function () { 
+            if ($scope.allZones) {
+                $scope.oeste = true;
+                $scope.sur = true;
+                $scope.norte = true;
+                $scope.capitalFed = true;
+                $scope.costaAtlantica = true;
+            } else {
+                $scope.oeste = false;
+                $scope.sur = false;
+                $scope.norte = false;
+                $scope.capitalFed = false;
+                $scope.costaAtlantica = false;
+            }
+            //init();
 
-        var init = function () {
+        }
+        
+        $scope.SetMarkers = function (results) { 
+        
+            if ($scope.allZones || $scope.oeste || $scope.norte || $scope.sur || $scope.capitalFed || $scope.costaAtlantica) {
+                
+                filterInmueblesMarker(results, $scope.map);
+            } else {
+                
+                while ($scope.Markers.length) {
+                    $scope.Markers.pop().setMap(null);
+                }
+
+            }
+        }
+
+        $scope.mostrar = function () { console.log('test'); };
+        //pasar scope.results
+        $scope.Markers = [];
+        function filterInmueblesMarker(results, mapa){
+           
+
+            for(var i=0; i < results.length ;i++)
+            {
+                if (($scope.oeste && results[i].Zona == "Zona oeste") || ($scope.sur && results[i].Zona == "Zona sur") || ($scope.norte && results[i].Zona == "Zona norte") || ($scope.capitalFed && results[i].Zona == "CABA")  || ($scope.costaAtlantica && results[i].Zona == "Costa Atlantica") ) {
+
+                    var markerToAdd  = new google.maps.Marker({
+                        position: { lat: parseFloat(results[i].Latitud) , lng: parseFloat(results[i].Longitud) },
+                        map: mapa,
+                        title: results[i].Titulo
+                    });
+                    $scope.Markers.push(markerToAdd);
+                
+                }
+            
+            }
+
+        };
+
+        var init = function () {// ver como devolver mapa para usar despues en filter func
             var map;
             function initMap() {
-                map = new google.maps.Map(document.getElementById('map'), {
+                $scope.map = new google.maps.Map(document.getElementById('map'), {
                     center: { lat: -34.66772, lng: -58.69761 },
                     zoom: 8
                 });
-                var marker = new google.maps.Marker({
-                    position: { lat: -34.66772, lng: -58.69761 },
-                    map: map,
-                    title: 'Inmueble 1'
-                });
+                
+          
+               filterInmueblesMarker($scope.results, $scope.map);
             };
 
             $('nav').hide();
@@ -106,5 +162,5 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
         };
         // and fire it after definition
        init();
-        
+       
     }]);

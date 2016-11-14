@@ -1,5 +1,26 @@
 ﻿var myApp = angular.module('inmuebleApp', []);
 
+myApp.filter('tipoSearch', function () {
+    
+    return function (inputArray, tipo) {
+        var results = [];
+        for (i = 0; i < inputArray.length; i++) {
+            
+            if (inputArray[i].Tipo === null) { continue; };
+            if ((inputArray[i].Tipo !== null && inputArray[i].Tipo.toString().includes(tipo)) ) {
+                
+                results.push(inputArray[i]);
+            };
+
+        };
+        
+        
+        return results;
+    };
+
+});
+
+
 myApp.filter('basicSearch', function () {
 
     return function (inputArray, token) {
@@ -28,7 +49,7 @@ myApp.filter('busquedaAvanzada', function () {
             console.log(inputArray[i].Precio);
 
             if (inputArray[i].Precio === null && inputArray[i].Zona === null && inputArray[i].Description === null && inputArray[i].AptoCredito === null && inputArray[i].Antiguedad === null && inputArray[i].Ambientes === null) { continue; };
-            if ((inputArray[i].Zona !== null && inputArray[i].Zona.toUpperCase().includes(jsonObject.zona.toUpperCase())) || (inputArray[i].Operacion.toUpperCase() !== null && inputArray[i].Operacion.toUpperCase() == jsonObject.operacion.toUpperCase()) || (inputArray[i].Tipo.toUpperCase() !== null && inputArray[i].Tipo.toUpperCase() == jsonObject.inmueble.toUpperCase())) {
+            if ((inputArray[i].Zona !== null && inputArray[i].Zona.toUpperCase().includes(jsonObject.zona.toUpperCase())) && (inputArray[i].Operacion.toUpperCase() !== null && inputArray[i].Operacion.toUpperCase() == jsonObject.operacion.toUpperCase()) && (inputArray[i].Tipo.toUpperCase() !== null && inputArray[i].Tipo.toUpperCase() == jsonObject.inmueble.toUpperCase())) {
                 
                 results.push(inputArray[i]);
             }

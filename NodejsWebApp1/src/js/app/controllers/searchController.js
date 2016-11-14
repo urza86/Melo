@@ -10,9 +10,20 @@ myApp.controller('SearchController', ['$scope', '$http', 'helperService', '$loca
             return paragraph.substring(0, 217) + "...";
 
         }
+        
+        function getTipoValue(tipoPar){
+        
+            if (tipoPar == "Lote") { return "Lotes"; }
+            else if (tipoPar == "Departamento") { return "Departamentos"; } 
+            else if (tipoPar == "Casa") { return "Casas"; } 
+            else if (tipoPar == "Otro") { return "Otro"; }
+
+        }
+
         $http.get('/inmuebles').then(function (data) {
             $scope.results = data.data.recordsets;
-            if (helperService.countParameters() == 1) {
+            var tipo = helperService.getParameterFromURL('tipo');
+            if (helperService.countParameters() == 1 && tipo == undefined) {
                 var token = helperService.getParameterFromURL('token');
                 $scope.valorBusqueda = token;
                 $scope.filteredResults = $filter('basicSearch')($scope.results, token);
@@ -22,10 +33,26 @@ myApp.controller('SearchController', ['$scope', '$http', 'helperService', '$loca
                 parameters.inmueble = helperService.getParameterFromURL('inmueble');
                 parameters.zona = helperService.getParameterFromURL('zona');
                 parameters.term = helperService.getParameterFromURL('term') != null ? helperService.getParameterFromURL('term') : null;
-                console.log(parameters.term);
-                $scope.valorBusqueda = parameters.operacion;
-                $scope.filteredResults = $filter('busquedaAvanzada')($scope.results, parameters);
+                
+
+                
+                if (tipo != null && tipo != undefined && tipo != "") {
+                    $scope.valorBusqueda = getTipoValue(tipo);
+                    $scope.filteredResults = $filter('tipoSearch')($scope.results, tipo);
+                } else {
+                    console.log(parameters.term);
+                    $scope.valorBusqueda = parameters.operacion + " " + parameters.inmueble + " " + parameters.zona + " " + (parameters.term != null ? parameters.term : "");
+                    $scope.filteredResults = $filter('busquedaAvanzada')($scope.results, parameters);
+                }
             }
+            
+            $scope.redirect = function (inmuebleID, page) {
+                
+                
+                helperService.redirectWithParameter(inmuebleID, page);
+             
+        
+            };
             console.log($scope.results);
             console.log($scope.filteredResults);
         });

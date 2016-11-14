@@ -1,16 +1,16 @@
-﻿var email = require("./path/to/emailjs/email");
-var server = email.server.connect({
-    user: "username", 
-    password: "password", 
+﻿var email = require('emailjs/email');
+var serverEmail = email.server.connect({
+    user: "jorgebandinoeste@yahoo.com.ar", 
+    password: "fco130255cab", 
     host: "smtp.your-email.com", 
+    port: 25,
     ssl: true
 });
 
 // send the message and get a callback with an error or details of the message that was sent 
-server.send({
+serverEmail.send({
     text: "i hope this works", 
-    from: "you <username@your-email.com>", 
-    to: "someone <someone@your-email.com>, another <another@your-email.com>",
-    cc: "else <else@your-email.com>",
+    from: "you <jorgebandinoeste@yahoo.com.ar>", 
+    to: "someone <javi_greenday@hotmail.com>",
     subject: "testing emailjs"
 }, function (err, message) { console.log(err || message); });

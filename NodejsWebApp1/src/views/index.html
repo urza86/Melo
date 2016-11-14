@@ -51,7 +51,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="searchPage.html?tipo=inversion">Inversiones</a>
+                            <a href="searchPage.html?tipo=Inversion">Inversiones</a>
                         </li>
                         <!-- <li>
                             <a href="services.html">Services</a>
@@ -61,16 +61,16 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inmuebles <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="portfolio-1-col.html">Lotes</a>
+                                    <a href="searchPage.html?tipo=Lote">Lotes</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-1-col.html">Casas</a>
+                                    <a href="searchPage.html?tipo=Casa">Casas</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-2-col.html">Departamentos</a>
+                                    <a href="searchPage.html?tipo=Departamento">Departamentos</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-4-col.html">Otros</a>
+                                    <a href="searchPage.html?tipo=Otro">Otros</a>
                                 </li>
                                 <!--<li>
                                     <a href="portfolio-item.html">Single Portfolio Item</a>
@@ -191,7 +191,7 @@
         </div>
 
         <!-- Marketing Icons Section -->
-
+      
         <div class="row" style="padding-top:30px">
             <div class="col-lg-12">
 
@@ -339,22 +339,22 @@
             <row>
                 <div class="col-md-3">
                     <div class="checkbox">
-                        <label><input id="allZones" type="checkbox" onclick="checkall()" value="">Todas</label>
+                        <label><input id="allZones" type="checkbox" ng-model="allZones" ng-click="checkall(); SetMarkers(results)" value="">Todas</label>
                     </div>
                     <div class="checkbox">
-                        <label><input class="inputcheckbox" type="checkbox" value="">Zona Oeste</label>
+                        <label><input class="inputcheckbox" ng-model="oeste" ng-click="SetMarkers(results)" type="checkbox" value="">Zona Oeste</label>
                     </div>
                     <div class="checkbox">
-                        <label><input class="inputcheckbox" type="checkbox" value="">Zona Norte</label>
+                        <label><input class="inputcheckbox" ng-model="norte" ng-click="SetMarkers(results)" type="checkbox" value="">Zona Norte</label>
                     </div>
                     <div class="checkbox">
-                        <label><input class="inputcheckbox" type="checkbox" value="">Zona Sur</label>
+                        <label><input class="inputcheckbox" ng-model="sur" ng-click="SetMarkers(results)" type="checkbox" value="">Zona Sur</label>
                     </div>
                     <div class="checkbox">
-                        <label><input class="inputcheckbox" type="checkbox" value="">Capital Federal</label>
+                        <label><input class="inputcheckbox" ng-model="capitalFed" ng-click="SetMarkers(results)" type="checkbox" value="">Capital Federal</label>
                     </div>
                     <div class="checkbox">
-                        <label><input class="inputcheckbox" type="checkbox" value="">Costa Atlantica</label>
+                        <label><input class="inputcheckbox" ng-model="costaAtlantica" ng-click="SetMarkers(results)"  type="checkbox" value="">Costa Atlantica</label>
                     </div>
                 </div>
                 <div id="map" style="height:400px; width:800px;" class="col-md-9">
@@ -423,7 +423,7 @@
                     </div>
                 </div>
             </footer>
-        </div>
+       <!-- </div>-->
     
     
         <!-- /.container -->
