@@ -21,7 +21,7 @@ myApp.controller('SearchController', ['$scope', '$http', 'helperService', '$loca
         }
 
         $http.get('/inmuebles').then(function (data) {
-            $scope.results = data.data.recordsets;
+            $scope.results = data.data.dataset;
             var tipo = helperService.getParameterFromURL('tipo');
             if (helperService.countParameters() == 1 && tipo == undefined) {
                 var token = helperService.getParameterFromURL('token');

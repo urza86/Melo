@@ -40,7 +40,10 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
         $scope.capitalize = function (myString){
             return helperService.capitalize(myString);
         }
-        $http.get('/inmuebles').then(function (data) { $scope.results = data.data.recordsets; console.log($scope.results);  });
+        $http.get('/inmuebles').then(function (data) {
+            console.log(data);
+            $scope.results = data.data.dataset; console.log($scope.results);
+        });
         $scope.myclick = function(){ console.log("hola");};
         
         $scope.redirect = function (inmuebleID, page) {
@@ -115,7 +118,7 @@ myApp.controller('HomeController', ['$scope', '$http','helperService','$location
         $scope.Markers = [];
         function filterInmueblesMarker(results, mapa){
            
-
+            console.log(results);
             for(var i=0; i < results.length ;i++)
             {
                 if (($scope.oeste && results[i].Zona == "Zona oeste") || ($scope.sur && results[i].Zona == "Zona sur") || ($scope.norte && results[i].Zona == "Zona norte") || ($scope.capitalFed && results[i].Zona == "CABA")  || ($scope.costaAtlantica && results[i].Zona == "Costa Atlantica") ) {

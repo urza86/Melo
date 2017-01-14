@@ -1,13 +1,85 @@
-﻿var database = require('./DBConnection.js');
+﻿//var database = require('./DBConnection.js').getCon();
+var database = require('./DBConnection.js');
 var express = require('express');
 var app = express();
 var bodyParser = require("body-parser");
-var sql = require('mssql');
+//var sql = require('mssql');
+var sql = require('mysql');
 var path = require("path");
-
+var flow = require("finally");
 app.use(bodyParser.json());
+var myrows;
+GLOBAL.myresultspar;
+function processQuery(myresultspar)
+{
+    GLOBAL.myresultspar = myresultspar;
+    var http = require('http').Server(app);
+    
+    var io = require('socket.io').listen(http);
+    var port = process.env.port || 1337;
+    
+    app.use(express.static('src'));
+    app.use(express.static('src/views'));
+   
+   
+    app.listen(3000);
+};
+
+app.get('/test', function (req, res) {
+    
+    res.setHeader('Content-Type', 'application/json');
+    //res.send({ "dataset" : myresultspar });
+    res.json({ "dataset" : GLOBAL.myresultspar });
+       // request = new sql.Request();
+        
+        //request.query('SELECT * FROM Inmuebles').then(function (recordsets) {
+            
+          //  res.json({ "dataset" : recordsets });
+ 
+            
+        
+        //});
+        
+       
+});
+app.get("/", function (req, res) { res.sendFile(path.join(__dirname + '/src/views/index.html')); });    
+
+app.get("/inmuebles", function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    //res.send({ "dataset" : myresultspar });
+    res.json({ "dataset" : GLOBAL.myresultspar });
+     
+});    
+
+
+app.get("/inmueble/:id", function (req, res) {
+    
+    var filterValue = req.params.id;
+    var filteredArray = [];
+    
+    for( var i=0; i < GLOBAL.myresultspar.length; i++)
+    {
+        
+        
+        if (GLOBAL.myresultspar[i].ID == filterValue) {
+            filteredArray.push(GLOBAL.myresultspar[i]);
+        }
+    }
+    //console.log(GLOBAL.myresultspar[0].Direccion);
+    res.setHeader('Content-Type', 'application/json');
+    
+    res.json({ "dataset" : filteredArray });
+    
+        });
+        
+    
+database.getConnection(processQuery);
+
+
+
+/*
 database.then(function () {
-    console.log(database);
+    
     var http = require('http').Server(app);
     
     var io = require('socket.io').listen(http);
@@ -23,7 +95,7 @@ database.then(function () {
             request.query('SELECT * FROM Inmuebles').then(function (recordsets) {
                 
                 res.json({ "dataset" : recordsets });
-                //res.json({ "count": "hola" });
+ 
             
         
             });
@@ -56,14 +128,14 @@ app.get("/inmueble/:id", function (req, res) {
 
    
 });   
-app.get("/inmuebles", function (req, res) { // no funca por ahora
+app.get("/inmuebles", function (req, res) { 
     
     database.then(function (data) {
         request = new sql.Request();
         
         request.query('SELECT * FROM Inmuebles').then(function (recordsets) {
             
-            //res.json({ "count" : recordsets.ID });
+ 
             res.json({"recordsets": recordsets});
             
         
@@ -71,8 +143,5 @@ app.get("/inmuebles", function (req, res) { // no funca por ahora
         
     });
 
-    //res.json(database);
-    /*database.get('SELECT ID FROM Inmuebles', function (err, row) {
-        res.json({ "count" : row.ID });
-    });*/
-});
+ 
+});*/
