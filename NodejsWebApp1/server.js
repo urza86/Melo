@@ -2,6 +2,8 @@
 var database = require('./DBConnection.js');
 var express = require('express');
 var app = express();
+var emailServer = require('./emailServer.js');
+//emailServer.enviar("desde server","cecilia.toscani@gmail.com","Te amo tanto");
 var bodyParser = require("body-parser");
 //var sql = require('mssql');
 var sql = require('mysql');
@@ -24,6 +26,14 @@ function processQuery(myresultspar)
    
     app.listen(3000);
 };
+
+app.get('/sendEmail', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.status('200');
+    res.json({});
+    console.log(req.query);
+    emailServer.enviar(req.query.msg,req.query.Mail,"Melo Propiedades - Pregunta",req.query.Name, req.query.Phone);
+});
 
 app.get('/test', function (req, res) {
     

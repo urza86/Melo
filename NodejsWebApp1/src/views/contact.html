@@ -1,39 +1,19 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
+<html ng-app="inmuebleApp" lang="en">
 
 <head>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("user_k7IKpOo7diIBy8uaYbpii");
-        })();
-
-        function sendEmail(msg) {
-
-            // parameters: service_id, template_id, template_parameters
-            emailjs.send("javierbandin", "template_dWCqz3yE", { name: "James", notes: msg })
-            .then(function (response) {
-                console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-            }, function (err) {
-                console.log("FAILED. error=", err);
-            });
-        }
-    </script>
+   
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Modern Business - Start Bootstrap Template</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../css/meloInmuebles.css" rel="stylesheet" type="text/css" />
@@ -42,12 +22,14 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
-
+    <script src="../js/app/angular.min.js"></script>
+    <script src="../js/app/app.js"></script>
+    <script src="../js/app/Services/HelperLibrary.js"></script>
+    <script src="../js/app/controllers/ContactController.js"></script>
 </head>
-
-<body>
-
+<body ng-controller="ContactController">
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top customNavigation" role="navigation">
         <div class="container customNavigation">
@@ -211,24 +193,23 @@
 
         <!-- /.container -->
     </nav>
-
     <!-- Page Content -->
     <div class="container">
-
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><small>Guillermo Melo - Negocios Inmobiliarios</small>
+                <h1 class="page-header">
+                    <small>Guillermo Melo - Negocios Inmobiliarios</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li>
+                        <a href="index.html">Home</a>
                     </li>
                     <li class="active">Donde Estamos!</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
-
         <!-- Content Row -->
         <div class="row">
             <!-- Map Column -->
@@ -243,13 +224,18 @@
                 <p>
                     Chubut 314<br>San Antonio de Padua, Merlo, Buenos Aires.<br>
                 </p>
-                <p><i class="fa fa-phone"></i> 
-                    <abbr title="Phone">P</abbr>: (011) 1523085379</p>
-                <p><i class="fa fa-envelope-o"></i> 
+                <p>
+                    <i class="fa fa-phone"></i>
+                    <abbr title="Phone">P</abbr>: (011) 1523085379
+                </p>
+                <p>
+                    <i class="fa fa-envelope-o"></i>
                     <abbr title="Email">E</abbr>: <a href="mailto:gmeloprop@gmail.com">gmeloprop@gmail.com</a>
                 </p>
-                <p><i class="fa fa-clock-o"></i> 
-                    <abbr title="Hours">H</abbr>: Lunes a Viernes: 10:00 AM to 6:00 PM y Sabados: 10:00 AM a 1:00 PM.</p>
+                <p>
+                    <i class="fa fa-clock-o"></i>
+                    <abbr title="Hours">H</abbr>: Lunes a Viernes: 10:00 AM to 6:00 PM y Sabados: 10:00 AM a 1:00 PM.
+                </p>
                 <ul class="list-unstyled list-inline list-social-icons">
                     <li>
                         <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
@@ -267,7 +253,6 @@
             </div>
         </div>
         <!-- /.row -->
-
         <!-- Contact Form -->
         <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
         <div class="row">
@@ -277,40 +262,37 @@
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Nombre:</label>
-                            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" ng-model="myName" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Telefono:</label>
-                            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                            <input type="tel" ng-model="myPhone" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Email:</label>
-                            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                            <input type="email" ng-model="myMail" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Mensaje:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="messageng" ng-model="mailMsg"  required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                            <textarea rows="10" ng-model="myMsg" cols="100" class="form-control" id="messageng" ng-model="mailMsg" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
                         </div>
                     </div>
                     <div id="success"></div>
                     <!-- For success/fail messages -->
                     <!--button type="submit" class="btn btn-primary" onclick="sendEmail()">Enviar</button-->
-                    <input type="button" class="btn btn-primary" ng-click="sendEmail(mailMsg)" value="Enviar" />
+                    <input type="button" class="btn btn-primary" ng-click="sendEmail()" value="Enviar" />
                 </form>
             </div>
-
         </div>
         <!-- /.row -->
-
         <hr>
-
         <!-- Footer -->
         <footer>
             <div class="row">
@@ -319,21 +301,15 @@
                 </div>
             </div>
         </footer>
-
     </div>
     <!-- /.container -->
-
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
     <!-- Contact Form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
     <!--script-- src="js/jqBootstrapValidation.js"></!--script-->
     <!--script src="js/contact_me.js"></script-->
-
 </body>
-
 </html>

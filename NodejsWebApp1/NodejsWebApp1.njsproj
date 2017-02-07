@@ -37,6 +37,7 @@
     <Compile Include="src\js\app\angular.min.js" />
     <Compile Include="src\js\app\app.js" />
     <Compile Include="src\js\app\controllers\ArticleController.js" />
+    <Compile Include="src\js\app\controllers\ContactController.js" />
     <Compile Include="src\js\app\controllers\HomeController.js" />
     <Compile Include="src\js\app\controllers\searchController.js" />
     <Compile Include="src\js\app\Services\DBConnectionService.js" />
