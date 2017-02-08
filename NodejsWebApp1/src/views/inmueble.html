@@ -207,14 +207,28 @@
                                 <li class="list-group-item"><label>Financiacion: {{ConvertirABoolean(context.Financiacion)}}</label></li>
                             </ul>
                         <row>
-                            <input class="form-control" type="email" placeholder="Email"></input> </br>
-                            <!--input class="form-control"  type="text" placeholder="Agregue comentario"></input-->
-                            <textarea class="form-control"  row="5" placeholder="Envienos sus dudas y/o preguntas"></textarea>
+                            <div class="controls">
+                                <label>Nombre:</label>
+                                <input class="form-control" ng-model="myName" type="text"></input> </br>
+                                </div>
+                            <div class="controls">
+                                <label>Email:</label>
+                                <input class="form-control" ng-model="myEmail" type="email" placeholder="Email"></input> </br>
+                                </div>
+                            <div class="controls">
+                                <label>Telefono:</label>
+                                <input class="form-control" ng-model="myPhone" type="tel"></input> </br>
+                                </div>
+                                <!--input class="form-control"  type="text" placeholder="Agregue comentario"></input-->
+                            <div class="controls">
+                                <label>Mensaje:</label>
+                                <textarea class="form-control" ng-model="myMsg" row="5" placeholder="Envienos sus dudas y/o preguntas"></textarea>
+                                </div>
 
-                        </row>
+</row>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Enviar</button>
+                        <button type="button" class="btn btn-default" ng-click="sendEmail()" data-dismiss="modal">Enviar</button>
                     </div>
                 </div>
             </div>
