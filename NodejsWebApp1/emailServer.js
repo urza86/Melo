@@ -1,7 +1,7 @@
 ﻿var email = require('./node_modules/emailjs');
 var serverEmail = email.server.connect({//aca va melo
-    user: 'bandinjavier@gmail.com', 
-    password: 'cecilia2009', 
+    user: 'gmelopropiedades@gmail.com', 
+    password: 'melomelo99', 
     host: "smtp.gmail.com", 
     port: 465,
     ssl: true
@@ -16,7 +16,7 @@ var serverEmail = email.server.connect({//aca va melo
         serverEmail.send({
             text: completeBody, 
             from: "Melo Propiedades Online<" + fromCliente + ">", //aca va melo
-            to: "Interesado <bandin.javier@gmail.com>", //aca va melo
+            to: "Interesado <gmelopropiedades@gmail.com>", //aca va melo
             subject: mySubject
         }, function (err, message) { console.log(err || message); });
     }
