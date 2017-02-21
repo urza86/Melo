@@ -1,6 +1,13 @@
 ﻿myApp.controller('ArticleController', ['$scope', '$http', 'helperService', function ($scope, $http, helperService) {
       
         var idInmueble = helperService.getParameterFromURL('ID');
+        function clearContactValues() {
+            
+            $scope.myName = "";
+            $scope.myPhone = "";
+            $scope.myEmail = "";
+            $scope.myMsg = "";
+        }    
         var source = '/inmueble/' + idInmueble;
         $http.get(source).then(function (data) {
             
@@ -12,6 +19,7 @@
             var source = '/sendEmail?Name=' + $scope.myName + '&Phone=' + $scope.myPhone + "&Mail=" + $scope.myEmail + "&msg=" + $scope.myMsg;
             $http.get(source).then(function (data) {
                 var qs = source.substr(source.indexOf('?') + 1);
+                clearContactValues();
                // console.log($.parseJSON('{"' + qs.replace(/&/g, '","').replace(/=/g, '":"') + '"}'));
             });
         }
