@@ -4,8 +4,8 @@
         var source = '/inmueble/' + idInmueble;
         $http.get(source).then(function (data) {
             
-            $scope.context = data.data.recordsets[0];
-            initMap(data.data.recordsets[0]);        
+            $scope.context = data.data.dataset[0];
+            initMap(data.data.dataset[0]);        
         });
         $scope.sendEmail = function () {
             
